@@ -1,4 +1,4 @@
-class food:
+class Food:
     def _init_(self,food_id,food_name,food_quantity,food_price,food_discount,food_stock):
         self.food_id = food_id
         self.food_name = food_name
@@ -32,6 +32,7 @@ class food:
         self.food_stock = food_stock
     def get_food_stock(self):
         return self.food_stock
+from food import Food 
 class menuoption:
     menu = []
     def add_menu(self):
@@ -41,7 +42,7 @@ class menuoption:
         Food_price = float(input("Enter food Price : "))
         Food_discount = float(input("Enter discount Price: "))
         Food_stock = float(input("Enter the items quantity left in stock: "))
-        Food_obj = food(Food_id,Food_name,Food_quantity,Food_price,Food_discount,Food_stock)
+        Food_obj = Food(Food_id,Food_name,Food_quantity,Food_price,Food_discount,Food_stock)
         self.menu.append(Food_obj)
         print("New menu Successfully Added!")
     def view_menu(self):
@@ -57,6 +58,7 @@ class menuoption:
                 break
         else:
             print("No item Found!")
+from food import menuoption
 class Menu:
     def _init_(self,menuoption_obj):
         self.menuoption_obj = menuoption_obj
@@ -77,5 +79,5 @@ if __name__ == "_main_":
     menu = Menu(menuoption_obj)
     while True:
         print("Enter \n1.Add Food Item \n2.View Menu \n3.Delete Food Item")
-        choice = int(input("Enter your choice : "))
+        choice = float(input("Enter your choice : "))
         menu.execute(choice)
