@@ -1,0 +1,88 @@
+class User:
+    def __init__(self,user_id,user_name,phone_number,Email,Address,password):
+        self.user_id = user_id
+        self.user_name = user_name
+        self.phone_number = phone_number
+        self.Email = Email
+        self.Address = Address
+        self.password = password
+    def __str__(self):
+        return f"User ID : {self.user_id} \nUser Name : {self.user_name} \nPhone Number : {self.phone_number} \nEmail : {self.Email} \nAddress : {self.Address}"
+    def set_user_id(self,user_id):
+        self.user_id = user_id
+    def get_book_id(self):
+        return self.user_id
+    def set_user_name(self,user_name):
+        self.user_name = user_name
+    def get_book_name(self):
+        return self.user_name
+    def set_phone_number(self,phone_number):
+        self.phone_number = phone_number
+    def get_phone_number(self):
+        return self.phone_number
+    def set_Email(self,Email):
+        self.Email = Email
+    def get_Email(self):
+        return self.Email
+    def set_Address(self,Address):
+        self.Address = Address
+    def get_Address(self):
+        return self.Address
+from main import User
+class user_reg:
+    user = []
+    def add_user(self):
+        user_id = input("Enter User id:" )
+        user_name = input("Enter User Full Name: ")
+        phone_number = int(input("Enter Phone Number: "))
+        Email = input("Enter E-mail: ")
+        Address = input("Enter Address: ")
+        password = input("Enter Password: ")
+        user_obj = User(user_id,user_name,phone_number,Email,Address,password)
+        self.user.append(user_obj)
+        print("User Successfully Registered!")
+    def view_user(self):
+        for i in self.user:
+            print()
+            print(i)
+    def update_user(self):
+        user_id = input("Enter User Id of the user you want to update : ")
+        for Users in self.user:
+            if Users.user_id == user_id:
+                user_name = input("Enter User Full Name: ")
+                phone_number = int(input("Enter Phone Number: "))
+                Email = input("Enter E-mail: ")
+                Address = input("Enter Address: ")
+                password = input("Enter Password: ")
+                Users.set_book_name(user_name)
+                Users.set_book_edition(phone_number)
+                Users.set_book_author(Email)
+                Users.set_book_publisher(Address)
+                Users.set_book_price(password)
+                print("Successfully Updated User")
+                break
+        else:
+            print("No User Found!")
+from main import user_reg
+class UserMain:
+    def __init__(self,userfunction_obj):
+        self.userfunction_obj = userfunction_obj
+    def execute(self,choice):
+        if choice == 1:
+            print("Add User")
+            self.userfunction_obj.add_user()
+        elif choice == 2:
+            print("View User")
+            self.userfunction_obj.view_user()
+        elif choice == 3:
+            print("Update User")
+            self.userfunction_obj.update_user()
+        else:
+            print("Invalid Choice")
+if __name__ == "__main__":
+    userfunction_obj = user_reg()
+    usermain = UserMain(userfunction_obj)
+    while True:
+        print("Enter \n1.Add user \n2.View user \n3.Update user")
+        choice = float(input("Enter your choice : "))
+        usermain.execute(choice)
