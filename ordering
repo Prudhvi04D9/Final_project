@@ -1,0 +1,13 @@
+from food import menu
+class user_log:
+    order = []
+    def place_oeder(self):
+        food_name = input("Enter Food Name: ")
+        food_quantity = input("Enter the Quantity: ")
+        order_obj = menu(food_name)
+        self.order.append(order_obj)
+        print("Order successfully placed!")
+    def view_order(self):
+        for i in self.order:
+            print()
+            print(i)
